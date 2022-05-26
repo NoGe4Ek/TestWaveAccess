@@ -10,6 +10,11 @@
 ## Spec
 Presented in [Junior_task_users.txt](https://github.com/NoGe4Ek/TestWaveAccess/blob/master/Junior_task_users.txt)
 
+## Screenshots
+![img1](https://github.com/NoGe4Ek/TestWaveAccess/blob/master/Screens/scr1_UserListFragment.png)
+![img2](https://github.com/NoGe4Ek/TestWaveAccess/blob/master/Screens/scr2_UserDetailsFragment.png)
+![img3](https://github.com/NoGe4Ek/TestWaveAccess/blob/master/Screens/scr3_UserDetailsFragment_friends.png)
+
 ## Used technologies
 ### Architecture
 #### MVI
