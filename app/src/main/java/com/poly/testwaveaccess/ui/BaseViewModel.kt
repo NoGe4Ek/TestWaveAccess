@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.poly.testwaveaccess.common.Extensions.launchWhenStarted
 import com.poly.testwaveaccess.common.Logger
+import com.poly.testwaveaccess.common.launchWhenStarted
 import com.poly.testwaveaccess.mvi.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

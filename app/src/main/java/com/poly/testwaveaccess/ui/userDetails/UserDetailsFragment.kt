@@ -14,15 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.poly.testwaveaccess.R
-import com.poly.testwaveaccess.common.Extensions.string
 import com.poly.testwaveaccess.common.Logger
+import com.poly.testwaveaccess.common.string
 import com.poly.testwaveaccess.databinding.FragmentUserDetailsBinding
 import com.poly.testwaveaccess.mvi.MviView
+import com.poly.testwaveaccess.ui.UserListAdapter
 import com.poly.testwaveaccess.ui.userDetails.mvi.UserDetailsNews
 import com.poly.testwaveaccess.ui.userDetails.mvi.UserDetailsState
 import com.poly.testwaveaccess.ui.userDetails.mvi.UserDetailsWish
-import com.poly.testwaveaccess.ui.UserListAdapter
-import com.poly.testwaveaccess.ui.userList.UserListFragmentDirections
 import com.poly.testwaveaccess.util.Util
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
