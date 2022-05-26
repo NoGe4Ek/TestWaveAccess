@@ -55,10 +55,10 @@ class UserListFragment : Fragment(), MviView<UserListState, UserListNews> {
         logger.connect(javaClass)
 
         userListRecycler = binding.userList
-        userListAdapter = UserListAdapter {
-            if (it.isActive == "true") {
+        userListAdapter = UserListAdapter { user ->
+            if (user.isActive == "true") {
                 val action = UserListFragmentDirections.actionUserListFragmentToUserDetailsFragment(
-                    userId = it.id
+                    userId = user.id
                 )
                 view.findNavController().navigate(action)
             } else {

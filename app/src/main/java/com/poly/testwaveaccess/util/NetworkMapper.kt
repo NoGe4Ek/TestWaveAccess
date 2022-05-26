@@ -1,5 +1,7 @@
 package com.poly.testwaveaccess.util
 
+import com.poly.testwaveaccess.data.models.domainModel.EyeColor
+import com.poly.testwaveaccess.data.models.domainModel.Fruit
 import com.poly.testwaveaccess.data.models.domainModel.User
 import com.poly.testwaveaccess.data.models.networkModel.FriendItem
 import com.poly.testwaveaccess.data.models.networkModel.UserNetworkEntity
@@ -17,8 +19,16 @@ class NetworkMapper @Inject constructor(): EntityMapper<UserNetworkEntity, User>
             phone = entity.phone,
             address = entity.address,
             about = entity.about,
-            eyeColor = entity.eyeColor,
-            favoriteFruit = entity.favoriteFruit,
+            eyeColor = when (entity.eyeColor) {
+                "brown" -> EyeColor.COLOR_BROWN
+                "green" -> EyeColor.COLOR_GREEN
+                else -> EyeColor.COLOR_BLUE
+            },
+            favoriteFruit = when (entity.favoriteFruit) {
+                "apple" -> Fruit.APPLE
+                "banana" -> Fruit.BANANA
+                else -> Fruit.STRAWBERRY
+            },
             registered = entity.registered,
             latitude = entity.latitude,
             longitude = entity.longitude,
@@ -37,8 +47,8 @@ class NetworkMapper @Inject constructor(): EntityMapper<UserNetworkEntity, User>
             phone = domainModel.phone,
             address = domainModel.address,
             about = domainModel.about,
-            eyeColor = domainModel.eyeColor,
-            favoriteFruit = domainModel.favoriteFruit,
+            eyeColor = domainModel.eyeColor.str,
+            favoriteFruit = domainModel.favoriteFruit.str,
             registered = domainModel.registered,
             latitude = domainModel.latitude,
             longitude = domainModel.longitude,

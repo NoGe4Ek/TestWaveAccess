@@ -59,10 +59,10 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
         logger.connect(javaClass)
 
         friendListRecycler = binding.friendList
-        friendListAdapter = UserListAdapter {
-            if (it.isActive == "true") {
+        friendListAdapter = UserListAdapter { user ->
+            if (user.isActive == "true") {
                 val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToUserDetailsFragment(
-                    userId = it.id
+                    userId = user.id
                 )
                 view.findNavController().navigate(action)
             } else {
@@ -112,30 +112,10 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
             binding.textviewPhone.text = user.phone
             binding.textviewAddress.text = user.address
             binding.textviewAbout.text = user.about
-            when (user.eyeColor) {
-                "brown" -> {
-                    binding.imageviewEyeColor.setImageResource(R.drawable.oval_eye_brown)
-                }
-                "green" -> {
-                    binding.imageviewEyeColor.setImageResource(R.drawable.oval_eye_green)
-                }
-                "blue" -> {
-                    binding.imageviewEyeColor.setImageResource(R.drawable.oval_eye_blue)
-                }
-            }
-            when (user.favoriteFruit) {
-                "apple" -> {
-                    binding.imageviewFavoriteFruit.setImageResource(R.drawable.ic_apple)
-                }
-                "banana" -> {
-                    binding.imageviewFavoriteFruit.setImageResource(R.drawable.ic_banana)
-                }
-                "strawberry" -> {
-                    binding.imageviewFavoriteFruit.setImageResource(R.drawable.ic_strawberry)
-                }
-            }
+            binding.imageviewEyeColor.setImageResource(user.eyeColor.id)
+            binding.imageviewFavoriteFruit.setImageResource(user.favoriteFruit.id)
             binding.textviewRegistered.text = Util.formatDate(user.registered)
-            binding.textviewLatitudeLongitude.text = user.latitude + "," + user.longitude
+            binding.textviewLatitudeLongitude.text = "${user.latitude}, ${user.longitude}"
 
             if (state.friends.isNotEmpty()) {
                 friendListAdapter.submitList(state.friends)

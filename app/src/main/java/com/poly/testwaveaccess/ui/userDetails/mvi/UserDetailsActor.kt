@@ -78,7 +78,7 @@ class UserDetailsActor: Actor<UserDetailsState, UserDetailsWish, UserDetailsEffe
 
             is UserDetailsWish.ExternalMap -> {
                 val intent = Intent(Intent.ACTION_VIEW).apply {
-                    val geo = wish.latitude + "," + wish.longitude
+                    val geo = "${wish.latitude}, ${wish.longitude}"
                     data = Uri.parse("geo:$geo")
                 }
                 intent.flags =

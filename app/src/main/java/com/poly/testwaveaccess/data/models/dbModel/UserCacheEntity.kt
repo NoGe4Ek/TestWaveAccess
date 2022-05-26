@@ -1,8 +1,9 @@
 package com.poly.testwaveaccess.data.models.dbModel
 
 import androidx.room.*
+import com.poly.testwaveaccess.data.database.AppDatabase
 
-@Entity(tableName = "users")
+@Entity(tableName = AppDatabase.DATABASE_NAME)
 data class UserCacheEntity(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
