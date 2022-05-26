@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">TestWaveAccess</string>
+    <string name="desc_profile_image" translatable="false">ProfileImage</string>
+    <string name="ex_textview_name" translatable="false">name</string>
+    <string name="template_age">Age:</string>
+    <string name="ex_textview_age" translatable="false">18</string>
+    <string name="template_company">Company:</string>
+    <string name="ex_textview_company" translatable="false">AccessWave</string>
+    <string name="template_email">Email:</string>
+    <string name="ex_textview_email" translatable="false">kirill.timofeev.a@gmail.com</string>
+    <string name="template_phone">Phone:</string>
+    <string name="ex_textview_phone" translatable="false">+8 (888) 888–88–88</string>
+    <string name="template_address">Address:</string>
+    <string name="ex_textview_address" translatable="false">892 Brooklyn Avenue, Cloverdale, Oklahoma, 2475</string>
+    <string name="template_eye_color">Eye color:</string>
+    <string name="desc_imageview_eye_color" translatable="false">eyeColor</string>
+    <string name="template_favorite_fruit">Favorite fruit:</string>
+    <string name="desc_imageview_favorite_fruit" translatable="false">favoriteFruit</string>
+    <string name="template_registered">Registered:</string>
+    <string name="ex_textview_registered" translatable="false">2014-02-19T11:40:41 -03:00</string>
+    <string name="template_map">Map:</string>
+    <string name="ex_textview_map" translatable="false">70.483619, 54.126795</string>
+    <string name="template_about">About:</string>
+    <string name="ex_textview_about" translatable="false">Eu nisi cillum incididunt et sint adipisicing laboris proident…</string>
+    <string name="template_friends">Friends</string>
+    <string name="ex_card_textview_name" translatable="false">name</string>
+    <string name="ex_card_textview_email" translatable="false">email</string>
+    <string name="ex_card_textview_isactive" translatable="false">isActive</string>
+    <string name="action_settings">action_settings</string>
+</resources>
