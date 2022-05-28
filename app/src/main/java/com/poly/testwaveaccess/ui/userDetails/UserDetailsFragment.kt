@@ -13,7 +13,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.poly.testwaveaccess.R
 import com.poly.testwaveaccess.common.Logger
 import com.poly.testwaveaccess.common.string
 import com.poly.testwaveaccess.databinding.FragmentUserDetailsBinding
@@ -42,6 +41,7 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
 
     private val args: UserDetailsFragmentArgs by navArgs()
     private var userId: Int = -1
+    private var motionProgress = MOTION_TRANSITION_INITIAL
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,13 +50,14 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
 
         _binding = FragmentUserDetailsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         logger.connect(javaClass)
+
+        binding.motionLayout.progress = motionProgress
 
         friendListRecycler = binding.friendList
         friendListAdapter = UserListAdapter { user ->
@@ -90,6 +91,12 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
             val laLo = binding.textviewLatitudeLongitude.string().split(",")
             userDetailsViewModel.obtainWish(UserDetailsWish.ExternalMap(laLo[0], laLo[1]))
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        motionProgress = binding.motionLayout.progress
     }
 
     override fun onDestroyView() {
@@ -132,6 +139,7 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
     }
 
     companion object {
-        var USER_ID = "userId"
+        private const val MOTION_TRANSITION_COMPLETED = 1F
+        private const val MOTION_TRANSITION_INITIAL = 0F
     }
 }

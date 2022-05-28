@@ -46,7 +46,6 @@ class UserListFragment : Fragment(), MviView<UserListState, UserListNews> {
 
         _binding = FragmentUserListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
