@@ -21,9 +21,7 @@ class UserDetailsActor: Actor<UserDetailsState, UserDetailsWish, UserDetailsEffe
                 try {
                     val user = usersRepository.getUser(wish.userId)
                     val friends = mutableListOf<User>()
-                    for (friendId in user.friends) {
-                        friends.add(usersRepository.getUser(friendId))
-                    }
+                    friends.addAll(usersRepository.getUsersByIds(user.friends))
 
                     emit(UserDetailsEffect.GetUserDetailsSuccess(user, friends))
                 } catch (e: Exception) {

@@ -41,7 +41,6 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
 
     private val args: UserDetailsFragmentArgs by navArgs()
     private var userId: Int = -1
-    private var motionProgress = MOTION_TRANSITION_INITIAL
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,8 +55,6 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
         super.onViewCreated(view, savedInstanceState)
 
         logger.connect(javaClass)
-
-        binding.motionLayout.progress = motionProgress
 
         friendListRecycler = binding.friendList
         friendListAdapter = UserListAdapter { user ->
@@ -91,12 +88,6 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
             val laLo = binding.textviewLatitudeLongitude.string().split(",")
             userDetailsViewModel.obtainWish(UserDetailsWish.ExternalMap(laLo[0], laLo[1]))
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        motionProgress = binding.motionLayout.progress
     }
 
     override fun onDestroyView() {
@@ -136,10 +127,5 @@ class UserDetailsFragment : Fragment(), MviView<UserDetailsState, UserDetailsNew
                 Toast.makeText(requireContext(), new.content, Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    companion object {
-        private const val MOTION_TRANSITION_COMPLETED = 1F
-        private const val MOTION_TRANSITION_INITIAL = 0F
     }
 }

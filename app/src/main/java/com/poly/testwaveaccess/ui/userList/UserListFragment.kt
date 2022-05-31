@@ -72,16 +72,7 @@ class UserListFragment : Fragment(), MviView<UserListState, UserListNews> {
             bind(viewLifecycleOwner.lifecycleScope, this@UserListFragment)
         }
 
-        val settings: SharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, 0)
-        if (settings.getBoolean(SETTINGS_FIRST_TIME, true)) {
-            userListViewModel.obtainWish(UserListWish.RefreshFromNetwork)
-            logger.log("First time")
-
-            settings.edit().putBoolean(SETTINGS_FIRST_TIME, false).apply()
-        } else {
-            userListViewModel.obtainWish(UserListWish.Refresh)
-        }
-
+        userListViewModel.obtainWish(UserListWish.SmartRefresh)
 
         binding.refreshUserList.setOnRefreshListener {
             userListViewModel.obtainWish(UserListWish.RefreshFromNetwork)
@@ -107,10 +98,5 @@ class UserListFragment : Fragment(), MviView<UserListState, UserListNews> {
                 Toast.makeText(requireContext(), new.content, Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    companion object {
-        private const val PREFS_NAME = "PrefsFile"
-        private const val SETTINGS_FIRST_TIME = "first_time"
     }
 }

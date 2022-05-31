@@ -1,5 +1,6 @@
 package com.poly.testwaveaccess.ui.userDetails.mvi
 
+import android.widget.Toast
 import com.poly.testwaveaccess.mvi.Reducer
 
 class UserDetailsReducer: Reducer<UserDetailsState, UserDetailsEffect, UserDetailsNews> {
@@ -9,19 +10,19 @@ class UserDetailsReducer: Reducer<UserDetailsState, UserDetailsEffect, UserDetai
         var reducedNews: UserDetailsNews? = null
         when (effect) {
             is UserDetailsEffect.GetUserDetailsFailure -> {
-                reducedNews = UserDetailsNews.Message(1000, effect.errorMessage)
+                reducedNews = UserDetailsNews.Message(Toast.LENGTH_SHORT, effect.errorMessage)
             }
             is UserDetailsEffect.GetUserDetailsSuccess -> {
                 reducedState = state.copy(user = effect.user, friends = effect.friends)
             }
             is UserDetailsEffect.ExternalCallFailure -> {
-                reducedNews = UserDetailsNews.Message(1000, effect.errorMessage)
+                reducedNews = UserDetailsNews.Message(Toast.LENGTH_SHORT, effect.errorMessage)
             }
             is UserDetailsEffect.ExternalEmailFailure -> {
-                reducedNews = UserDetailsNews.Message(1000, effect.errorMessage)
+                reducedNews = UserDetailsNews.Message(Toast.LENGTH_SHORT, effect.errorMessage)
             }
             is UserDetailsEffect.ExternalMapFailure -> {
-                reducedNews = UserDetailsNews.Message(1000, effect.errorMessage)
+                reducedNews = UserDetailsNews.Message(Toast.LENGTH_SHORT, effect.errorMessage)
             }
             is UserDetailsEffect.ExternalSuccess -> {
                 //Do nothing, that's ok

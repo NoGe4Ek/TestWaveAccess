@@ -14,29 +14,29 @@ class UserListActor : Actor<UserListState, UserListWish, UserListEffect>() {
     ): Flow<UserListEffect?> = flow {
         when (wish) {
             is UserListWish.RefreshFromNetwork -> {
-                emit(UserListEffect.RefreshFromNetworkInProcess(true))
+                emit(UserListEffect.RefreshInProcess(true))
                 try {
                     val users = usersRepository.cacheAndGetUsers()
                     if (users.isNotEmpty())
                         emit(
-                            UserListEffect.RefreshFromNetworkSuccess(
+                            UserListEffect.RefreshSuccess(
                                 false,
                                 users,
                             )
                         )
                     else
-                        emit(UserListEffect.RefreshFromNetworkFailure(false, "Users is missing"))
+                        emit(UserListEffect.RefreshFailure(false, "Users is missing"))
 
                 } catch (e: Exception) {
                     val errorMessage = e.message ?: "Unknown exception"
-                    emit(UserListEffect.RefreshFromNetworkFailure(false, errorMessage))
+                    emit(UserListEffect.RefreshFailure(false, errorMessage))
                 }
             }
 
-            is UserListWish.Refresh -> {
+            is UserListWish.SmartRefresh -> {
                 emit(UserListEffect.RefreshInProcess(true))
                 try {
-                    val users = usersRepository.getUsers()
+                    val users = usersRepository.spGetUsers()
                     if (users.isNotEmpty())
                         emit(
                             UserListEffect.RefreshSuccess(

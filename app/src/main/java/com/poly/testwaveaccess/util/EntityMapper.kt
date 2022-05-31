@@ -9,4 +9,8 @@ abstract class EntityMapper <Entity, DomainModel>{
     fun mapFromEntityList(entities: List<Entity>): List<DomainModel> {
         return entities.map { mapFromEntity(it) }
     }
+
+    fun mapToEntityList(entities: List<DomainModel>): List<Entity> {
+        return entities.map { mapToEntity(it) }
+    }
 }
